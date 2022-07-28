@@ -3,7 +3,7 @@
     <ul class="nav flex-column">
 
       <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="{{ route('dashboard') }}">
+        <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" aria-current="page" href="{{ route('dashboard') }}">
           <span data-feather="home" class="align-text-bottom"></span>
           Dashboard
         </a>
@@ -17,7 +17,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('products.index') }}">
+        <a class="nav-link {{ Request::is('products*') ? 'active' : '' }}" href="{{ route('products.index') }}">
           <span data-feather="shopping-cart" class="align-text-bottom"></span>
           Products
         </a>

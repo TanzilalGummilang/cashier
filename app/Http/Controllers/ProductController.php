@@ -14,7 +14,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('contents.product.index');
+        return view('contents.product.index', [
+            'products' => Product::latest()->get()
+        ]);
     }
 
     /**
@@ -24,7 +26,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('contents.product.create');
     }
 
     /**
@@ -35,7 +37,15 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = ([
+            'name' => 'required',
+            'price' => 'numeric|min:0'
+        ]);
+
+        $validateData = $request->validate($rules);
+
+        Product::create($validateData);
+        return to_route('products.index')->with('success', "Tambah produk success");
     }
 
     /**
@@ -57,7 +67,9 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('contents.product.edit', [
+            'product' => $product
+        ]);
     }
 
     /**
@@ -69,7 +81,15 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $rules = ([
+            'name' => 'required',
+            'price' => 'numeric|min:0'
+        ]);
+
+        $validateData = $request->validate($rules);
+
+        Product::where('id', $product->id)->update($validateData);
+        return to_route('products.index')->with('success', "Edit produk success");
     }
 
     /**
@@ -80,6 +100,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        Product::destroy($product->id);
+        return to_route('products.index')->with('success', "Hapus produk : $product->name");
     }
 }
