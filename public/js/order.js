@@ -66,8 +66,18 @@ function subTotal(){
 }
 
 function grandTotal(){
-  console.log(orders);
-/*   orders.forEach(function(property){
-    console.log(property.subTotal.map());
-  }); */
+  // console.log(orders);
+  let subTotals = orders.map(function(property){
+    return property.subTotal;
+  });
+
+  let sumSubTotals = subTotals.reduce((previousValue, currentValue) => parseFloat(previousValue) + parseFloat(currentValue), 0);
+
+  console.log(sumSubTotals);
+  let grandTotal = document.getElementById('grand-total');
+  if(sumSubTotals == 0){
+    return grandTotal.value = 0;
+  }else{
+    return grandTotal.value = sumSubTotals;
+  }
 }

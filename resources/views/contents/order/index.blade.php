@@ -44,7 +44,7 @@ Pilih Produk
 
       <div class="mt-2">
         <button onclick="orderAdd(this)" class="btn btn-primary btn-sm">
-          <span data-feather="shopping-cart" class="align-text-bottom"></span> Add to cart
+          <span data-feather="plus" class="align-text-bottom"></span> Add to cart
         </button>
       </div>
 
@@ -53,7 +53,7 @@ Pilih Produk
     <div class="mt-4 mb-3 row">
       <div class="col-sm-4">
         <label for="grand-total" class="form-label fw-bold">Grand Total</label>
-        <input id="grand-total" type="number" class="form-control form-control-sm" id="grand-total" readonly>
+        <input id="grand-total" type="number" class="form-control form-control-sm" id="grand-total" value="0" readonly>
       </div>
 
       <div class="col-auto mt-auto">
