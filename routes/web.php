@@ -25,5 +25,5 @@ Route::resource('products', ProductController::class);
 
 Route::controller(OrderController::class)->group(function () {
     Route::get('orders', 'index')->name('orders.index');
-    // Route::post('orders', 'store')->name('orders.store');
+    Route::post('orders', 'store')->name('orders.store');
 });

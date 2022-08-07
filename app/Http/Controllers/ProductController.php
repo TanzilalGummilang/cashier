@@ -37,6 +37,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $rules = ([
             'name' => 'required',
             'price' => 'numeric|min:0'

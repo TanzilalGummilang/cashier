@@ -11,6 +11,13 @@ Pilih Produk
     <h1 class="h2">Pilih Produk</h1>
   </div>
 
+  @if(session()->has('success'))
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ session('success') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  @endif  
+
   <div class="mt-2">
 
     <div class="col-sm-4">
@@ -50,18 +57,22 @@ Pilih Produk
 
     </div>
 
-    <div class="mt-4 mb-3 row">
-      <div class="col-sm-4">
-        <label for="grand-total" class="form-label fw-bold">Grand Total</label>
-        <input id="grand-total" type="number" class="form-control form-control-sm" id="grand-total" value="0" readonly>
-      </div>
+    <form action="{{ route('orders.store') }}" method="POST">
+      @csrf
 
-      <div class="col-auto mt-auto">
-        <button class="btn btn-success btn-sm">
-          <span data-feather="shopping-cart" class="align-text-bottom"></span> Submit
-        </button>
+      <div class="mt-4 mb-3 row">
+        <div class="col-sm-4">
+          <label for="grand-total" class="form-label fw-bold">Grand Total</label>
+          <input type="number" class="form-control form-control-sm" id="grand-total" name="grand_total" value="0" readonly>
+        </div>
+
+        <div class="col-auto mt-auto">
+          <button class="btn btn-success btn-sm">
+            <span data-feather="shopping-cart" class="align-text-bottom"></span> Submit
+          </button>
+        </div>
       </div>
-    </div>
+    </form>
     
     <div class="table-responsive mt-4">
       <table class="table table-hover">

@@ -74,10 +74,6 @@ function grandTotal(){
   let sumSubTotals = subTotals.reduce((previousValue, currentValue) => parseFloat(previousValue) + parseFloat(currentValue), 0);
 
   console.log(sumSubTotals);
-  let grandTotal = document.getElementById('grand-total');
-  if(sumSubTotals == 0){
-    return grandTotal.value = 0;
-  }else{
-    return grandTotal.value = sumSubTotals;
-  }
+
+  document.getElementById('grand-total').value = sumSubTotals;
 }
